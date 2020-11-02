@@ -1,7 +1,8 @@
 class Event < ApplicationRecord
   belongs_to :users, through: :attendances
   has_many :attendances
-
+  belongs_to :user
+  
   validates :start_date, presence: true, if start_date < Time.now
   validates :duration, presence: true, numericality: { greater_than: 0 }, if :duration % 5 == 0
   validates :title, presence: true, length: { in: 5..140}
