@@ -23,7 +23,7 @@ Faker::Config.locale = :fr
   User.create!(
     first_name:Faker::Name.first_name,
     last_name:Faker::Name.last_name,
-    email:Faker::Internet.unique.email(domain: 'yopmail.com'),
+    email:Faker::Internet.unique.email(domain: '@yopmail.com'),
     description:Faker::GreekPhilosophers.quote,
     encrypted_password:Faker::Internet.password(min_length: 6)
   )
