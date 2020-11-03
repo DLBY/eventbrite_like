@@ -28,14 +28,20 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Créer un évènement</a>
       </li>
+
+      
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Compte</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" <%= link_to "S'inscrire", new_user_registration_path %></a>
-          <a class="dropdown-item" <%= link_to "Se connecter", new_user_session_path %></a>
-          <a class="dropdown-item" href="#">Mon profil</a>
+        <% if user_signed_in?%>
+          <a class="dropdown-item" <%= link_to "Mon profil", user_path(current_user.id) %></a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %></a>
+          <% else %>
+          <a class="dropdown-item" <%= link_to "S'inscrire", new_user_registration_path %></a>
+          <a class="dropdown-item" <%= link_to "Se connecter", new_user_session_path %></a>
+          <% end %>
+          
         </div>
       </li>
     </ul>
