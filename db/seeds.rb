@@ -38,9 +38,10 @@ tp User.all
     start_date:Faker::Date.forward(days: 90),
     duration:[5,10,15,20,25,30,35,40,45,50,55,60].sample,
     title:Faker::Movie.title,
-    description:Faker::Lorem.paragraph(sentence_count: 2),
+    description:Faker::Lorem.paragraph_by_chars(number: 200, supplemental: false),
     price:Faker::Number.within(range: 1..1000),
-    location:Faker::Address.unique.city
+    location:Faker::Address.unique.city,
+    event_admin_id: User.ids.sample
   )
 end
 tp Event.all
