@@ -5,9 +5,11 @@ class Event < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :event_admin, class_name: 'User', optional: true
   
-  validates :start_date, presence: true#if start_date < Time.now, 
+  validates :start_date, presence: true
+  validate :is_future?
 
-  validates :duration, presence: true, numericality: { only_integer: true, greater_than: 0 }#if :duration % 5 == 0, 
+  validates :duration, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validate :divisable_by_five? 
 
   validates :title, presence: true, length: { in: 3..140}
 
@@ -16,17 +18,22 @@ class Event < ApplicationRecord
   validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 1000}
 
   validates :location, presence: true
-
-  validate :is_future?, :divisable_by_five?
-
   private
 
   def is_future?
-    errors.add(:expiration_date, "can't be in the past.") if start_date < Time.now
-  end
+    if start_date != nil
+      if Time.now > start_date
+        errors.add(:start_date, "date de départ peut pas être passée !")
+      end
+    end
+    end
 
   def divisable_by_five?
-    errors.add(:duration, "must be a multiple of 5") unless duration % 5 == 0 
-  end
+    if duration != nil
+      if duration % 5 != 0
+        errors.add(:duration, "durée doit être multiple de 5")
+      end
+    end
+    end
 
 end

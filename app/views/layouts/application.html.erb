@@ -26,7 +26,7 @@
         <a class="nav-link"<%= link_to "Accueil", root_path %></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Créer un évènement</a>
+        <a class="nav-link" <%= link_to "Créer un évènement", new_event_path %></a>
       </li>
 
       
@@ -52,6 +52,15 @@
   </div>
 </nav>
 
+
+<% if flash[:success] %>
+<div class="alert alert-success alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span><%=flash[:success]%></div>
+    <% end%>
+    <% if flash[:failure] %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span><%=flash[:failure]%></div>
+ <% end%>
     <%= yield %>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
