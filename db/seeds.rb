@@ -12,21 +12,35 @@ require 'activerecord-reset-pk-sequence'
 ActiveRecord::Base.connection.disable_referential_integrity do
   User.delete_all
   User.reset_pk_sequence
-  puts 'Data base cleaned up'
+  Event.delete_all
+  Event.reset_pk_sequence
+  Attendance.delete_all
+  Attendance.reset_pk_sequence
+  puts 'DB cleaned up !'
 end
 
-Faker::Config.locale = :fr
 
 #Users
 
-10.times do
+20.times do
   User.create!(
     first_name:Faker::Name.first_name,
     last_name:Faker::Name.last_name,
     email:Faker::Internet.unique.email(domain: '@yopmail.com'),
-    description:Faker::GreekPhilosophers.quote,
-    encrypted_password:Faker::Internet.password(min_length: 6)
+    password: Faker::Internet.password(min_length: 6),description:Faker::GreekPhilosophers.quote
   )
 end
-
 tp User.all
+
+#Events
+10.times do
+  Event.create!(
+    start_date:Faker::Date.forward(days: 90),
+    duration:[5,10,15,20,25,30,35,40,45,50,55,60].sample,
+    title:Faker::Movie.title,
+    description:Faker::Lorem.paragraph(sentence_count: 2),
+    price:Faker::Number.within(range: 1..1000),
+    location:Faker::Address.unique.city
+  )
+end
+tp Event.all
