@@ -12,7 +12,7 @@
   <% @event.each do |event| %>
     <div class="card">
       <div class="card-img-body">
-      <img class="card-img" src="https://picsum.photos/500/230" alt="Card image cap">
+      <img class="card-img" src="https://picsum.photos/id/<%= rand(1..99) %>/500/230" alt="Card image cap">
       </div>
       <div class="card-body">
         <h4 class="card-title"><%= event.title%></h4>
