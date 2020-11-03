@@ -1,9 +1,9 @@
-class UserMailer < ApplicationMailer
+class AttendanceMailer < ApplicationMailer
   default from: 'david.lobry96@gmail.com'
  
-  def welcome_email(user)
+  def join_event(attendance)
     #on récupère l'instance user pour ensuite pouvoir la passer à la view en @user
-    @user = user 
+    @user = attendance.user
 
     #on définit une variable @url qu'on utilisera dans la view d’e-mail
     @url  = 'https://eventbrite-like-david.herokuapp.com' 
