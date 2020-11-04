@@ -10,6 +10,8 @@ end
 
 gem "letter_opener", :group => :development
 
+gem 'stripe'
+
 gem 'dotenv-rails'
 
 gem 'devise'

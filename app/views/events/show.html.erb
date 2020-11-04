@@ -24,6 +24,7 @@
       <u>Prix</u>: <%= @event.price%> €<br>
       <!-- Methode count en private pour le nombre d'inscrits -->
       <u>Nombre d'inscrits</u>: <%= @count %><br>
+      <%= link_to "Participer", new_attendance_path %>
     </p>
   </div>
 
