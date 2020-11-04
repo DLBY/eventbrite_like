@@ -4,6 +4,6 @@
 <h2>Votre paiement de <strong><%= (@amount / 100).to_f %>€</strong> a bien été pris en compte!</h2>
 
 <p>Si vous n'êtes pas automatiquement redirigé(e) vers l'accueil, merci de cliquez sur le bouton ci-dessous</p>
-<meta HTTP-EQUIV="REFRESH" content="5; <%=root_path%>">
+<meta HTTP-EQUIV="REFRESH" content="5; <%=event_path(@event.id)%>">
 <%= link_to "Rejoindre l'Accueil", root_path, class:"btn btn-outline-primary btn-lg" %> 
 </div>

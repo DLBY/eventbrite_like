@@ -19,7 +19,6 @@ class AttendancesController < ApplicationController
       description: 'Inscription',
       currency: 'EUR',
     })
-  
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
