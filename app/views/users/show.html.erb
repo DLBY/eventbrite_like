@@ -21,9 +21,8 @@
                       
                         <div class="col-md-12">
                             <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Évènements récents</h5>
+                            <% @user.event_admins.sort.each do |event| %>
                             <table class="table table-sm table-hover table-striped">
-                            <% @event_admin.sort.each do |event| %>
-                         
                                 <tbody>                                    
                                     <tr>
                                         <td>
