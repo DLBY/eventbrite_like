@@ -26,19 +26,6 @@
       <u>Nombre d'inscrits</u>: <%= @count %><br>
     </p>
   </div>
-  
-  <div>
-    <br>
-    <% if current_user %>
-      <% if current_user.id != @event.event_admin_id %>
-      <% if @participated.include? current_user.id %>
-      <%else%>
-        <%= link_to new_event_attendance_path(params['id']) do %>
-          <button type="button" class="btn btn-success">Participer à l'évenement</button>
-        <% end %>
-      <% end %>
-      <%end%>
-    <% end %>
-  </div>
+
 </div>
 <br>
