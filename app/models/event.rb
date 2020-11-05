@@ -20,6 +20,8 @@ class Event < ApplicationRecord
   validates :location, presence: true
   private
 
+  has_one_attached :event_picture
+
   def is_future?
     if start_date != nil
       if Time.now > start_date

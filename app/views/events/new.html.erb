@@ -33,6 +33,12 @@
     <%= f.label :location %><br>
     <%= f.text_field :location, autofocus:true,class: "form-control" %>
   </div>
+
+     <div class="field">
+    <%= f.label :Image %><br>
+    <%= f.file_field :event_picture, autofocus:true,class: "form-control", :required => true %>
+  </div>
+
   <div class="container text-center">
 <%= f.submit "Create", class: "btn btn-primary mt-5 btn-lg " %>
 </div>

@@ -20,7 +20,7 @@ class EventsController < ApplicationController
 
     if @event.save
       redirect_to event_path(@event.id)
-      flash[:success] = "Ton évenement a bien été créé !"
+      flash[:success] = "Évènement bien créé !"
     else render 'new'
     end
   end
@@ -28,7 +28,7 @@ class EventsController < ApplicationController
   private
 
   def params_event
-    params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location)
+    params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location, :event_picture)
   end
   
 end
