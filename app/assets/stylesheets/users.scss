@@ -4,3 +4,9 @@
 img {
   margin-top: 20px;
 }
+
+img[alt="avatar"] {
+  height: auto px;
+  width: auto px;
+  max-width: 300px;
+}
