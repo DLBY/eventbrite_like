@@ -1,9 +1,9 @@
-class EventsController < ApplicationController
+class Admin::EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
 
   def index
-    @event = Event.all
+    @events = Event.all
   end
 
   def new
@@ -21,6 +21,18 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to event_path(@event.id)
     else render 'new'
+    end
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+
+    if @event.destroy
+    flash[:success] = "Évènement supprimé"
+    redirect_to admin_events_path
+    else
+      flash[:failure] = "L'évènement n'a pas pu être supprimé"
+      redirect_to admin_events_path
     end
   end
 

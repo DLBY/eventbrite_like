@@ -25,7 +25,7 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link active" href="<%= admin_root_path %>">
                   <span data-feather="home"></span>
                   Dashboard <span class="sr-only">(current)</span>
                 </a>
@@ -67,9 +67,7 @@
             </div>
           </div>
 
-          <canvas class="my-4" id="myChart" width="800" height="300"></canvas>
-
-          <h2>Évènements à venir</h2>
+          <h2>Gestion évènements</h2>
           
           <div class="table-responsive">
             <table class="table table-striped table-sm">
@@ -79,17 +77,18 @@
                   <th>Titre</th>
                   <th>Prix</th>
                   <th>Créateur</th>
-                  <th>Date</th>
+                  <th>Supprimer</th>
                 </tr>
               </thead>
               <tbody>
-              <% @events.sort_by(&:start_date).each do |event| %>
+              <% @events.sort_by(&:start_date).each do |event|%>
                 <tr>
                   <td><%=event.id%></td>
                   <td><%=event.title%></td>
                   <td><%=event.price%> €</td>
                   <td><%=event.event_admin.email%></td>
-                  <td><%=event.start_date.strftime('%d %B, %Y - %HH%M')%></td>
+                  <td><a href="<%= admin_event_path(event.id)%>" data-confirm="Voulez-vous vraiment supprimer cet évènement ?" data-method="DELETE"><i class="fas fa-trash ml-4"></i></a></td>
+                  
 
                 </tr>
                 <%end%>
