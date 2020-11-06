@@ -6,10 +6,4 @@ class AvatarsController < ApplicationController
   redirect_to(user_path(@user))
   end
 
-  private
-
-  def params_event
-    params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location)
-  end
-  
 end

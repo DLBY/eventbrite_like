@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  get 'admin/check_if_admin'
+  root 'events#index'
 
   devise_for :users, :controllers => {
     registrations: 'registrations'}
-  
-  root 'events#index'
 
   resources :users, only: [:show] do
     resources :avatars, only: [:create]
@@ -12,6 +12,11 @@ Rails.application.routes.draw do
   resources :events do
     resources :attendances, only: [:index, :new, :create]
     resources :event_pictures
+  end
+  
+  namespace :admin do
+    root 'admin#show'
+    resources :events, :users
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
