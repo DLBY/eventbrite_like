@@ -14,6 +14,7 @@ class Admin::UsersController < ApplicationController
       flash[:failure] = "L'utilisateur n'a pas pu être supprimé"
       redirect_to admin_users_path
     end
+  end
 
     def update
       @user = User.find(params[:id])
@@ -34,9 +35,6 @@ class Admin::UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:first_name, :last_name, :description, :email, :is_admin)
     end
-
-  end
-
 
   
 end

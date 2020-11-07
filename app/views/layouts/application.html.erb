@@ -41,7 +41,9 @@
           <a class="dropdown-item" <%= link_to "S'inscrire", new_user_registration_path %></a>
           <a class="dropdown-item" <%= link_to "Se connecter", new_user_session_path %></a>
           <% end %>
-          
+        <li class="nav-item">
+        <a class="nav-link" <%= link_to "Accès admin", admin_root_path %></a>
+      </li>
         </div>
       </li>
     </ul>

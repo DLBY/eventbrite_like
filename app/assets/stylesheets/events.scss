@@ -76,3 +76,12 @@ body {
     
   }
 }
+
+#jumbotron-hero {
+  background-image: url(asset_path('48139.jpg'));
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top;
+  background-size: cover;
+  height: 500px;
+}

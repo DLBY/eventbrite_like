@@ -87,9 +87,10 @@
                   <td><%=user.last_name%></td>
                   <td><%=user.email%></td>
                   <td><a href="<%= admin_user_path(user.id)%>" data-confirm="Voulez-vous vraiment supprimer cet utilisateur ?" data-method="DELETE"><i class="fas fa-trash ml-4"></i></a></td>
-                  <td><%= form_for(user) do |f| %>
+                  <td><%= form_for user, url:admin_user_path(user.id),method: :patch do |f| %>
                   <div class="field ml-3">
-                   <%= f.check_box :is_admin %> <br />
+                   <%= f.check_box :is_admin %>
+                   <%= f.submit "Actualiser", class: "btn btn-outline-primary align-middle btn-sm p-1 " %>
                   </div> <% end %> </td>
                   
 
