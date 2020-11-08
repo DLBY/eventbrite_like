@@ -78,6 +78,7 @@
                   <th>Prix</th>
                   <th>Créateur</th>
                   <th>Supprimer</th>
+                  <th>Lien</th>
                 </tr>
               </thead>
               <tbody>
@@ -88,7 +89,7 @@
                   <td><%=event.price%> €</td>
                   <td><%=event.event_admin.email%></td>
                   <td><a href="<%= admin_event_path(event.id)%>" data-confirm="Voulez-vous vraiment supprimer cet évènement ?" data-method="DELETE"><i class="fas fa-trash ml-4"></i></a></td>
-                  
+                  <td><a href="<%=admin_event_submission_path(event.id) %>"> <i class="fas fa-link ml-2"></i> </td>
 
                 </tr>
                 <%end%>

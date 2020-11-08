@@ -1,0 +1,24 @@
+<div class='container mt-4'>
+  <br>
+  <h1><%= @event.title %></h1>
+  <!-- INFORMATION SUR L'UTILISATEUR -->
+  <br>
+  <div class= 'border border-white mt-4 pt-4 pl-2' style="max-width: 50rem; font-size: 18px;">
+    <p>
+      <u>Date de début</u>: <%= @event.start_date.strftime('%d of %B, %Y - %HH%M') %><br>
+      <u>Date de fin</u>: <%= @end_date %><br>
+      <u>Créateur de l'Event</u>: <%= User.find(@event.event_admin_id).email %><br>
+      <u>Lieu de l'Event</u>: <%= @event.location %><br>
+      <u>Description</u>: <%= @event.description %><br>
+      <u>Prix</u>: <%= @event.price%> €<br>
+      <!-- Methode count en private pour le nombre d'inscrits -->
+      <u>Nombre d'inscrits</u>: <%= @count %><br>
+     <%= form_for @event, url:admin_event_submission_path(@event.id),method: :patch do |f| %>
+      <label>Approuver l'événement</label>
+       <%= f.check_box :validated %>
+      <%= f.submit "Actualiser", class: "btn btn-outline-primary align-middle btn-sm p-1 " %>
+      <% end %> </td>
+    </div>
+
+    </p>
+  </div>

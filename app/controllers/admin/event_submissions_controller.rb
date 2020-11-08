@@ -3,7 +3,7 @@ class Admin::EventSubmissionsController < ApplicationController
 
 
   def index
-    @events = Event.all
+    @events = Event.where(validated: nil)
   end
 
   def new
@@ -36,10 +36,24 @@ class Admin::EventSubmissionsController < ApplicationController
     end
   end
 
+  def update
+    @event = Event.find(params[:id])
+    if @event.update(params_event)
+      flash[:success] = "Validation OK !"
+      redirect_to admin_event_submissions_path
+    else
+      redirect_to admin_event_submissions_path
+    end
+  end
+
+  def edit
+    @event = Event.find(params[:id])
+  end
+
   private
 
   def params_event
-    params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location, :event_picture)
+    params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location, :event_picture, :validated)
   end
   
 end

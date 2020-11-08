@@ -35,7 +35,7 @@ class Admin::EventsController < ApplicationController
       redirect_to admin_events_path
     end
   end
-
+  
   private
 
   def params_event
