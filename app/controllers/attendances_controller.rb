@@ -20,6 +20,12 @@ class AttendancesController < ApplicationController
       currency: 'EUR',
     })
 
+    attendance_params = params.permit[:event_id]
+    @attendance = Attendance.create(user_id: current_user.id, event_id: @event.id, strip_customer_id: customer.id)
+
+    redirect_to event_path(@event.id)
+
+
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_event_attendance_path

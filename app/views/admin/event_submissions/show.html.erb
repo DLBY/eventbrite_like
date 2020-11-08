@@ -14,9 +14,9 @@
       <!-- Methode count en private pour le nombre d'inscrits -->
       <u>Nombre d'inscrits</u>: <%= @count %><br>
      <%= form_for @event, url:admin_event_submission_path(@event.id),method: :patch do |f| %>
-      <label>Approuver l'événement</label>
-       <%= f.check_box :validated %>
-      <%= f.submit "Actualiser", class: "btn btn-outline-primary align-middle btn-sm p-1 " %>
+      <label>Approuver l'événement :</label>
+      <%= f.submit "Valider", value: "Validé", class: "btn btn-outline-success align-middle btn-sm p-1 " %>
+      <%= f.submit "Rejeter", value: "Rejeté",class: "btn btn-outline-danger align-middle btn-sm p-1 " %>
       <% end %> </td>
     </div>
 

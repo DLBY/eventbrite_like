@@ -37,12 +37,19 @@ class Admin::EventSubmissionsController < ApplicationController
   end
 
   def update
-    @event = Event.find(params[:id])
-    if @event.update(params_event)
+    
+    if params[:commit] == 'Validé'
+      is_validated = true
       flash[:success] = "Validation OK !"
+    elsif params[:commit] == 'Rejeté'
+      is_validated = false
+      flash[:failure] == "Evènement rejeté !"
+    end
+    @event = Event.find(params[:id])
+    if @event.update(validated: is_validated)
       redirect_to admin_event_submissions_path
     else
-      redirect_to admin_event_submissions_path
+      render :edit
     end
   end
 
